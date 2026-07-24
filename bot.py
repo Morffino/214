@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Конфигурация
-TOKEN = os.getenv('BOT_TOKEN')
+TOKEN = os.getenv('MTUyOTk5OTQyNjE5MjQwODgyNg.GhV6j5.dx3gWwAvBm2WyebZuP_Ys3Wgk9VX-Juih9uMj8')
 GUILD_ID = int(os.getenv('GUILD_ID', 0))
 CATEGORY_ID = int(os.getenv('CATEGORY_ID', 0))
 STAFF_ROLE_ID = int(os.getenv('STAFF_ROLE_ID', 0))

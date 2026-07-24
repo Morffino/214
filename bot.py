@@ -14,7 +14,7 @@ load_dotenv()
 TOKEN = os.getenv('MTUyOTk5OTQyNjE5MjQwODgyNg.GhV6j5.dx3gWwAvBm2WyebZuP_Ys3Wgk9VX-Juih9uMj8')
 GUILD_ID = int(os.getenv('1528337219612311633', 0))
 CATEGORY_ID = int(os.getenv('1529240936356380672', 0))
-STAFF_ROLE_ID = int(os.getenv('STAFF_ROLE_ID', 0))
+STAFF_ROLE_ID = int(os.getenv('1530014120949317692', 0))
 LOG_CHANNEL_ID = int(os.getenv('LOG_CHANNEL_ID', 0))
 TICKET_LIFETIME_HOURS = int(os.getenv('TICKET_LIFETIME_HOURS', 10))
 

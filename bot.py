@@ -39,23 +39,48 @@ class TicketView(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
     
-    @discord.ui.button(label="📋 Общие вопросы", style=discord.ButtonStyle.primary, custom_id="general", emoji="📋")
+    @discord.ui.button(
+        label="📋 Общие вопросы", 
+        style=discord.ButtonStyle.primary,  # Синяя кнопка
+        custom_id="general", 
+        emoji="📋"
+    )
     async def general_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await self.create_ticket(interaction, "Общие вопросы")
     
-    @discord.ui.button(label="🔄 Восстановление вещей", style=discord.ButtonStyle.success, custom_id="restore", emoji="🔄")
+    @discord.ui.button(
+        label="🔄 Восстановление вещей", 
+        style=discord.ButtonStyle.success,  # Зеленая кнопка
+        custom_id="restore", 
+        emoji="🔄"
+    )
     async def restore_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await self.create_ticket(interaction, "Восстановление вещей")
     
-    @discord.ui.button(label="⚙️ Технические проблемы", style=discord.ButtonStyle.warning, custom_id="tech", emoji="⚙️")
+    @discord.ui.button(
+        label="⚙️ Технические проблемы", 
+        style=discord.ButtonStyle.secondary,  # Серая кнопка (исправлено)
+        custom_id="tech", 
+        emoji="⚙️"
+    )
     async def tech_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await self.create_ticket(interaction, "Технические проблемы")
     
-    @discord.ui.button(label="⚠️ Жалоба на игрока", style=discord.ButtonStyle.danger, custom_id="player_report", emoji="⚠️")
+    @discord.ui.button(
+        label="⚠️ Жалоба на игрока", 
+        style=discord.ButtonStyle.danger,  # Красная кнопка
+        custom_id="player_report", 
+        emoji="⚠️"
+    )
     async def player_report_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await self.create_ticket(interaction, "Жалоба на игрока")
     
-    @discord.ui.button(label="👑 Жалоба на Администрацию", style=discord.ButtonStyle.danger, custom_id="admin_report", emoji="👑")
+    @discord.ui.button(
+        label="👑 Жалоба на Администрацию", 
+        style=discord.ButtonStyle.danger,  # Красная кнопка
+        custom_id="admin_report", 
+        emoji="👑"
+    )
     async def admin_report_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         await self.create_ticket(interaction, "Жалоба на Администрацию")
     
@@ -169,7 +194,12 @@ class TicketControlView(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
     
-    @discord.ui.button(label="❌ Закрыть тикет", style=discord.ButtonStyle.danger, custom_id="close_ticket", emoji="❌")
+    @discord.ui.button(
+        label="❌ Закрыть тикет", 
+        style=discord.ButtonStyle.danger,  # Красная кнопка
+        custom_id="close_ticket", 
+        emoji="❌"
+    )
     async def close_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         if not interaction.user.guild_permissions.administrator and not interaction.user.get_role(STAFF_ROLE_ID):
             await interaction.response.send_message(
@@ -189,7 +219,12 @@ class TicketControlView(discord.ui.View):
         await close_ticket(channel, interaction.user, "Закрыт по запросу персонала")
         await interaction.response.send_message("🔄 Тикет закрывается...")
     
-    @discord.ui.button(label="⏰ Продлить тикет", style=discord.ButtonStyle.primary, custom_id="extend_ticket", emoji="⏰")
+    @discord.ui.button(
+        label="⏰ Продлить тикет", 
+        style=discord.ButtonStyle.primary,  # Синяя кнопка
+        custom_id="extend_ticket", 
+        emoji="⏰"
+    )
     async def extend_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         if not interaction.user.guild_permissions.administrator and not interaction.user.get_role(STAFF_ROLE_ID):
             await interaction.response.send_message(
@@ -453,7 +488,7 @@ async def slash_close(interaction: discord.Interaction):
     description="⏰ Продлить текущий тикет"
 )
 @app_commands.default_permissions(administrator=True)
-@app_commands.describe(hours="На сколько часов продлить (по умолчанию -10)")
+@app_commands.describe(hours="На сколько часов продлить (по умолчанию - стандартное время)")
 async def slash_extend(interaction: discord.Interaction, hours: int = None):
     """Продлевает время жизни тикета"""
     channel = interaction.channel
